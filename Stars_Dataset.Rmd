@@ -1,0 +1,41 @@
+---
+title: "Stars Dataset"
+author: "Caitlyn Nguyen"
+date: "2023-01-31"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+stars <- read.csv("stars.csv")
+
+star_type0 <- stars[stars$Star.type == 0]
+star_type1 <- stars[stars$Star.type == 1]
+star_type2 <- stars[stars$Star.type == 2]
+star_type3 <- stars[stars$Star.type == 3]
+star_type4 <- stars[stars$Star.type == 4]
+star_type5 <- stars[stars$Star.type == 5]
+```
+
+```{r}
+library(ggplot2)
+
+ggplot(data = stars, mapping = aes(x = Star.type, fill = Star.type)) +
+  geom_bar() +
+  labs(x = "Star Type", y = "Frequency", title = "Star Distribution") +
+    scale_x_discrete(labels = c("Brown Dwarf", "Red Dwarf", "White Dwarf", 
+                              "Main Sequence", "Supergiant", "Hypergiant"))
+```
+```{r}
+ggplot(data = stars) +
+  geom_point(mapping = aes(x = Temperature..K., y = Absolute.magnitude.Mv.)) +
+  scale_x_reverse() +
+  scale_y_reverse() +
+  labs(x = "Temperature (Kelvin)",
+       y = "Absolute Magnitude",
+       title = "Hertzsprung-Russel Diagram")
+```
+
