@@ -9,6 +9,9 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+Here we imported the dataset and broke down each star type into its own 
+dataframe.
+
 ```{r}
 stars <- read.csv("stars.csv")
 
@@ -20,6 +23,10 @@ star_type4 <- stars[stars$Star.type == 4]
 star_type5 <- stars[stars$Star.type == 5]
 ```
 
+As we created a bar plot of the distribution of the frequency of all the
+different star types, we discovered it is evenly distributed. This thus
+indicates that the data is evenly distributed for each factor.
+
 ```{r}
 library(ggplot2)
 
@@ -29,13 +36,16 @@ ggplot(data = stars, mapping = aes(x = Star.type, fill = Star.type)) +
     scale_x_discrete(labels = c("Brown Dwarf", "Red Dwarf", "White Dwarf", 
                               "Main Sequence", "Supergiant", "Hypergiant"))
 ```
+Here is a partial mapping of the the diagram shown in the Kaggle description. 
 ```{r}
 ggplot(data = stars) +
-  geom_point(mapping = aes(x = Temperature..K., y = Absolute.magnitude.Mv.)) +
+  geom_point(mapping = aes(x = Temperature..K., y = Absolute.magnitude.Mv.,
+                           color = Star.type)) +
   scale_x_reverse() +
   scale_y_reverse() +
   labs(x = "Temperature (Kelvin)",
        y = "Absolute Magnitude",
-       title = "Hertzsprung-Russel Diagram")
+       title = "Hertzsprung-Russel Diagram (Partial Mapping)",
+       color = c("Star Type"))
 ```
 
