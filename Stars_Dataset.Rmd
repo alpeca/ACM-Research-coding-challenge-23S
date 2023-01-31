@@ -15,12 +15,12 @@ dataframe.
 ```{r}
 stars <- read.csv("stars.csv")
 
-star_type0 <- stars[stars$Star.type == 0]
-star_type1 <- stars[stars$Star.type == 1]
-star_type2 <- stars[stars$Star.type == 2]
-star_type3 <- stars[stars$Star.type == 3]
-star_type4 <- stars[stars$Star.type == 4]
-star_type5 <- stars[stars$Star.type == 5]
+star_type0 <- stars[stars$Star.type == 0,]
+star_type1 <- stars[stars$Star.type == 1,]
+star_type2 <- stars[stars$Star.type == 2,]
+star_type3 <- stars[stars$Star.type == 3,]
+star_type4 <- stars[stars$Star.type == 4,]
+star_type5 <- stars[stars$Star.type == 5,]
 ```
 
 As we created a bar plot of the distribution of the frequency of all the
